@@ -1,0 +1,4 @@
+word kafka
+count flink
+scala flink
+spark kafka
