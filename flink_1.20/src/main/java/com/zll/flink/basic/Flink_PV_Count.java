@@ -24,6 +24,7 @@ import org.apache.flink.util.Collector;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -75,12 +76,11 @@ public class Flink_PV_Count {
                     public void processElement(PageViewCount pageViewCount, Context context, Collector<PageViewCount> collector) throws Exception {
                         listState.add(pageViewCount);
                         String time = pageViewCount.getTime();
-                        try {
-                                long ts = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").parse(time).getTime();
-                                context.timerService().registerEventTimeTimer(ts +1);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+//                        System.out.println(time);
+//                        new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new Date(time)).
+//                                long ts = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").parse(time).getTime();
+                                context.timerService().registerEventTimeTimer(Long.valueOf(time) +1);
+
                     }
 
                     @Override
