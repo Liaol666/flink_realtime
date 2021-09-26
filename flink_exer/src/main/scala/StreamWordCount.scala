@@ -17,8 +17,9 @@ object StreamWordCount {
   def main(args: Array[String]): Unit = {
     val params = ParameterTool.fromArgs(args)
     var host = params.get("host");
+//    val port = params.getInt("port");
     val port = params.getInt("port");
-    
+
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     val textDstrem: DataStream[String] = env.socketTextStream(host, port)
 
