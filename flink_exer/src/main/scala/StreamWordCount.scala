@@ -19,7 +19,7 @@ object StreamWordCount {
     var host = params.get("host");
 //    val port = params.getInt("port");
     val port = params.getInt("port");
-
+    val environment = StreamExecutionEnvironment.getExecutionEnvironment
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     val textDstrem: DataStream[String] = env.socketTextStream(host, port)
 
